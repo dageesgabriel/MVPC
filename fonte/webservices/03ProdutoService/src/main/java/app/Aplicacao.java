@@ -2,24 +2,24 @@ package app;
 
 import static spark.Spark.*;
 
-import service.ProdutoService;
+import usuario.UsuarioService;
 
 public class Aplicacao {
 	
-	private static ProdutoService produtoService = new ProdutoService();
+	private static UsuarioService usuarioService = new UsuarioService();
 	
     public static void main(String[] args) {
         port(6789);
 
-        post("/produto", (request, response) -> produtoService.add(request, response));
+        post("/usuario", (request, response) -> usuarioService.add(request, response));
 
-        get("/produto/:id", (request, response) -> produtoService.get(request, response));
+        get("/usuario/:id", (request, response) -> usuarioService.get(request, response));
 
-        get("/produto/update/:id", (request, response) -> produtoService.update(request, response));
+        get("/usuario/update/:id", (request, response) -> usuarioService.update(request, response));
 
-        get("/produto/delete/:id", (request, response) -> produtoService.remove(request, response));
+        get("/usuario/delete/:id", (request, response) -> usuarioService.remove(request, response));
 
-        get("/produto", (request, response) -> produtoService.getAll(request, response));
+        get("/usuario", (request, response) -> usuarioService.getAll(request, response));
                
     }
 }
